@@ -1,0 +1,85 @@
+{% extends 'entries/base.html' %}
+{% load crispy_forms_tags %}
+      {% block content %}
+      {% if user.is_authenticated %}
+    <section class="section">
+        <div class="container">
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content col">
+                        <a class="btn btn-outline-primary btn-lg active " role="button" href="{% url 'entry-create' %}" style="background-color: rgb(7, 164, 212)">Add new entry</a>
+                    </div>
+                </div>
+            </article>
+            {% for entry in entries  %}
+            {% if entry.author == user %}
+            <article class="media col-sm-11">
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <div>
+                                <a class="btn btn-outline-info active btn-block " style="background-color: rgb(0, 122, 192)" href="{% url 'entry-detail' entry.id %}"><b>{{ entry.title }}</b></a>
+                            </div>
+                            <div class="content-section mt-2">
+                                <small>{{ entry.date_posted }}</small>
+                                <br>{{ entry.text }}
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </article>
+            {% endif %}
+            {% endfor %}
+
+            <!-- !!!  Pagination !!! -->
+            
+            <!--
+            {% if is_paginated %}
+            
+            {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-outline-primary mb-4">First Page</a>
+            <a href="?page={{ page.obj.previous.page.number }}" class="btn btn-outline-primary mb-4">Previous</a>
+            {% endif %}
+
+             {% for num in page_obj.paginator.page_range %}
+            {% if page_obj == None %}
+            <a href="?page={{ num }}" class="btn btn-primary mb-4">SOMETHING</a>
+            {% elif page_obj.number == num %}
+            <a href="?page={{ num }}" class="btn btn-primary mb-4">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}" class="btn btn-outline-primary mb-4">{{ num }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary mb-4">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-primary mb-4">Last</a>
+            {% endif %}
+
+            
+            {% endif %} -->
+        
+        </div>
+
+    </section>
+    {% else %}
+    <div class="border row content-section mt-5">
+        <div class="container col-12">
+            <p ><big>Welcome to my Diary website. You can write your personal diary and save it so your memories remain forever. You can only see your own diary that you have created. Log in or Sign up and start your personal notes right now.</big></p> 
+        </div>
+        <article class="media mt-4">
+            <div class="media-content">
+                <div class="mb-3 col-12">
+                    <a class="btn btn-outline-primary btn-lg  mb-2" role="button" href="{% url 'login' %}" >Login</a>
+                    <a class="btn btn-outline-primary btn-lg  mb-2" role="button" href="{% url 'register' %}" >Sign Up</a>
+                </div>                          
+            </div>
+        </article>   
+</div>
+
+    
+    {% endif %}
+    {% endblock %}
+
+

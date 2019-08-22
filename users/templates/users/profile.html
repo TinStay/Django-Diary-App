@@ -1,0 +1,39 @@
+{% extends "entries/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    
+<section class="section ">
+  <div class="content-section ">
+
+      <form class="container" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class='form-group'>
+            <legend class='border-bottom mb-4'>
+                Profile Info
+            </legend>
+            <div class="media row ">
+              <div class="col-sm-8">
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+                <div class= "form-group ">
+                  <button class="btn btn-lg btn-outline-primary" type="submit">Update</button>
+              </div>
+              </div>
+              <div class="container row col-sm-4 ">           
+                <img class="rounded-circle account-img col-xs-6" src="{{ user.profile.image.url }}" width="400" height="400" >                               
+                <!-- {% for ass in backends.associated %}
+                {% if ass.provider == "facebook"  %}
+                <img class="rounded-circle account-img col-xs-6" src="{{ ass.extra_data.picture.data.url }}" width="250" height="250" >                
+                {% endif %}
+                {% endfor %}  -->
+              </div>
+            </div>
+          </fieldset>
+    </form>
+  </div>
+</section>
+<div class="container">
+  <h1 class="btn disabled">You have visited your profile {{num_visits}} {% if num_visits > 1 %}times {% else %} time {% endif %} since you logged in.</h1>
+</div>
+
+{% endblock content %}

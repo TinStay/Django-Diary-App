@@ -1,0 +1,26 @@
+{% extends 'entries/base.html' %}
+{% load crispy_forms_tags %} 
+{% block content %}
+<div class="content-section mt-5">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class='form-group'>
+            <legend class='border-bottom mb-4'>
+                Register Today
+            </legend>
+            {{ form|crispy }} <!--REGISTER FORM -->
+        </fieldset>
+        <div class= "form-group">
+            <button class="btn btn-lg btn-outline-primary" type="submit">Sign up</button>
+            <a class="btn btn-outline-primary btn-sm active  ml-2" role="button" href="{% url 'social:begin' 'facebook' %}" >Facebook</a>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">  
+            Already have an account?<a class="ml-2" href="{% url 'login' %}">Log In</a>
+        </small>
+    </div>
+</div>
+
+
+{% endblock %}

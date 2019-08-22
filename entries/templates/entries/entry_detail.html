@@ -1,0 +1,53 @@
+{% extends 'entries/base.html' %}
+{% load crispy_forms_tags %}
+      {% block content %}
+      {% if user.is_authenticated %}
+    <section class="section">
+        <div class="container">
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="">
+                        <a class="btn btn-outline-primary btn-lg active" role="button" href="{% url 'entry-create' %}" style="background-color: rgb(7, 164, 212)">Add new entry</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <div>
+                                <strong>{{ object.title }}</strong>
+                            </div>
+                            <div>
+                                <small>{{ object.date_posted }}</small>
+                                <br>{{ object.text }}
+                            </div>
+                        </p>
+                    </div>
+                </div class='content '>
+                <a class="btn btn-lg btn-outline-primary is-link mr-3" href="{% url 'entry-update' object.id %}">Update</a>
+                <a class="btn btn-lg btn-outline-danger is-link mr-3" href="{% url 'entry-delete' object.id %}">Delete</a>
+            </article>
+        </div>
+
+    </section>
+    {% else %}
+    <div class="border row content-section mt-5">
+        <div class="container col-12">
+            <p ><big>Welcome to my Diary website. You can write your personal diary and save it so your memories remain forever. You can only see your own diary that you have created. Log in or Sign up and start your personal notes right now.</big></p> 
+        </div>
+        <article class="media mt-4">
+            <div class="media-content">
+                <div class="mb-3 col-12">
+                    <a class="btn btn-outline-primary btn-lg  mb-2" role="button" href="{% url 'login' %}" >Login</a>
+                    <a class="btn btn-outline-primary btn-lg  mb-2" role="button" href="{% url 'register' %}" >Sign Up</a>
+                </div>                          
+            </div>
+        </article>   
+</div>
+
+    
+    {% endif %}
+    {% endblock %}
