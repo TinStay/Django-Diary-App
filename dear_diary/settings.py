@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'entries.apps.EntriesConfig',
     'users.apps.UsersConfig',
     "crispy_forms",
-    "social_django"
+    "social_django",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -141,29 +142,6 @@ MEDIA_URL = '/media/'
 
 # AUTH_USER_MODEL = 'users.CustomUser'
 
-
-#Allowing authentication with social platforms
-AUTHENTICATION_BACKENDS = [
-    "social_core.backends.facebook.FacebookOAuth2",#Facebook
-    "django.contrib.auth.backends.ModelBackend", #DEFAULT
-]
-
-# Facebook login App ID and App
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
-SOCIAL_AUTH_FACEBOOK_KEY = 2288953658040873
-SOCIAL_AUTH_FACEBOOK_SECRET = "1bf676d0978d416370d1d01b5a21845d"
-
-
-
-#Info from Facebook login
-SOCIAL_AUTH_FACEBOOK_SCOPE = ["email"]
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': "id, name, email, picture.type(large)"
-}    
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
-    ("name", "name"),
-    ("email", "email"), 
-    ("picture"), ("picture"),  
-]
+DATE_INPUT_FORMATS = ['%d-%m-%Y',]
 
 

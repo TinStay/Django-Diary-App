@@ -1,18 +1,18 @@
 {% extends 'entries/base.html' %}
 {% block content %}
 <section class="section">
-        <div class="container">
+        <div class="col-md-10 offset-md-1 ">
             <form method="POST" >
                 {% csrf_token %}
                 <fieldset class="form-group">
-                        <legend class="border-bottom mb-4">Delete Entry</legend> 
-                        <big>Are you sure you want to delete entry <b>{{ object.title }}</b></big>                     
-        </fieldset>
+                        <legend class="border-bottom mb-4 "><bold>Delete Entry</bold></legend> 
+                        <big>Are you sure you want to delete entry <b>{{ object.title }}</b>?</big>                     
+                </fieldset>
 
                 <div class="field is-grouped is-grouped-right">
                     <div class="control">
-                        <button class="btn btn-lg btn-outline-danger is-link">Delete</button>
-                        <a class="btn btn-lg btn-outline-secondary is-link" href="{% url 'entry-detail' object.id %}">Cancel</a>
+                        <button class="btn btn-lg btn-danger is-link ">Delete</button>
+                        <a class="btn btn-lg btn-outline-secondary is-link ml-3" href="{% url 'entry-detail' object.id %}">Cancel</a>
                     </div>
                 </div>
             </form>

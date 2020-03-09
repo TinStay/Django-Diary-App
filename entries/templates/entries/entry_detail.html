@@ -3,32 +3,36 @@
       {% block content %}
       {% if user.is_authenticated %}
     <section class="section">
-        <div class="container">
+        <div class="col-md-10 offset-md-1">
 
             <article class="media">
                 <div class="media-content">
                     <div class="">
-                        <a class="btn btn-outline-primary btn-lg active" role="button" href="{% url 'entry-create' %}" style="background-color: rgb(7, 164, 212)">Add new entry</a>
+                        <a class="btn btn-entry btn-lg active" role="button" href="{% url 'entry-create' %}">Add new entry</a>
+                        
+
                     </div>
+                 
                 </div>
             </article>
 
-            <article class="media">
-                <div class="media-content">
-                    <div class="content">
+            <article class="mb-3">
+                <div class="col-12">
+                    <div class="content mb-3">   
                         <p>
-                            <div>
-                                <strong>{{ object.title }}</strong>
+                            <div class='mb-2'>
+                                <strong >{{ object.title }}</strong>
                             </div>
-                            <div>
+                            <div class='mb-2'>
                                 <small>{{ object.date_posted }}</small>
                                 <br>{{ object.text }}
                             </div>
                         </p>
                     </div>
-                </div class='content '>
-                <a class="btn btn-lg btn-outline-primary is-link mr-3" href="{% url 'entry-update' object.id %}">Update</a>
-                <a class="btn btn-lg btn-outline-danger is-link mr-3" href="{% url 'entry-delete' object.id %}">Delete</a>
+                </div>
+                <a class="btn btn-lg btn-update is-link mr-3 mt-3" href="{% url 'entry-update' object.id %}">Update</a>
+                <a class="btn btn-lg btn-outline-danger is-link mr-3 mt-3" href="{% url 'entry-delete' object.id %}">Delete</a>
+                <a class="btn btn-secondary btn-return btn-sm" role="button" href="{% url 'home' %}">Back to home</a>
             </article>
         </div>
 

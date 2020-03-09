@@ -16,11 +16,11 @@ Including another URLconf
 
 from django.urls import path
 from . import views 
-from .views import EntryListView, EntryDetailView, EntryCreateView, EntryUpdateView, EntryDeleteView
+from .views import EntryListView, EntryDetailView, EntryCreateView, EntryUpdateView, EntryDeleteView, home_screen_view
 
 
 urlpatterns = [
-    path('', EntryListView.as_view(), name='home'),
+    path('', home_screen_view, name='home'),
     path('entry/<int:pk>/', EntryDetailView.as_view(), name='entry-detail'),
     path('entry/new/', EntryCreateView.as_view(), name='entry-create'),
     path('entry/<int:pk>/update', EntryUpdateView.as_view(), name='entry-update'),

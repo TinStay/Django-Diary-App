@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %} 
 {% load static %}
 {% block content %}
-<div class="content-section mt-5">
+<div class=" mt-5">
     <form method="POST">
         {% csrf_token %}
         <fieldset class='form-group'>
@@ -12,13 +12,13 @@
             {{ form|crispy }}  <!--LOGIN FORM -->
         </fieldset>
         <div class= "form-group">
-            <button class="btn btn-lg btn-outline-primary" type="submit">Login</button>
-            <a class="btn btn-primary btn-sm  ml-2" role="button" href="{% url 'social:begin' 'facebook' %}" >Facebook</a>
+            <button class="btn btn-lg btn-entry" type="submit">Login</button>
+
         </div>
     </form>
     <div class="border-top pt-3">
         <small class="text-muted">  
-            Don't have an account?<a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+        Don't have an account?<a class="ml-2" style='text-decoration: none;' href="{% url 'register' %}">Sign Up</a>
         </small>
     </div>
 </div>
